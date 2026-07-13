@@ -5,7 +5,6 @@ import { z } from "zod";
 import { useAuth, logAudit, STANDARD_ROLES } from "@/lib/auth";
 import { useI18n, type Lang } from "@/lib/i18n";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable/index";
 import { LogIn, AlertCircle, UserPlus, Loader2 } from "lucide-react";
 import panimLogo from "@/assets/panim-logo.png.asset.json";
 
@@ -102,26 +101,6 @@ function LoginPage() {
       } else {
         navigate({ to: "/" });
       }
-    }
-  };
-
-  const handleGoogle = async () => {
-    setError(null);
-    setBusy(true);
-    try {
-      const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: window.location.origin,
-      });
-      if (result.error) {
-        setBusy(false);
-        setError(t("login.err.googleFail"));
-        return;
-      }
-      if (result.redirected) return;
-      navigate({ to: "/" });
-    } catch {
-      setBusy(false);
-      setError(t("login.err.googleCancel"));
     }
   };
 
@@ -299,16 +278,6 @@ function LoginPage() {
               </form>
             )}
 
-            <div className="flex items-center gap-3 my-5">
-              <div className="flex-1 h-px" style={{ background: "var(--line)" }} />
-              <span className="mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--ink-2)" }}>{t("login.or")}</span>
-              <div className="flex-1 h-px" style={{ background: "var(--line)" }} />
-            </div>
-
-            <button type="button" onClick={handleGoogle} disabled={busy} className="btn-outline-ink w-full">
-              <GoogleLogo className="w-4 h-4" />
-              {t("login.google")}
-            </button>
           </div>
 
           <div className="text-center mono text-[9px] uppercase tracking-[0.2em] mt-5" style={{ color: "var(--ink-2)" }}>
@@ -340,13 +309,3 @@ function ErrorBox({ message }: { message: string }) {
   );
 }
 
-function GoogleLogo({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 48 48" className={className} aria-hidden>
-      <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.2-.1-2.3-.4-3.5z"/>
-      <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.9 19 13 24 13c3 0 5.8 1.1 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4c-7 0-13 3.8-16.3 9.5-.5.4-.9.8-1.4 1.2z"/>
-      <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.1C29.2 35 26.7 36 24 36c-5.3 0-9.7-3.4-11.3-8l-6.6 5C9.4 39.9 16.2 44 24 44z"/>
-      <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4.1 5.5l6.2 5.1C41.1 35 44 30 44 24c0-1.2-.1-2.3-.4-3.5z"/>
-    </svg>
-  );
-}
