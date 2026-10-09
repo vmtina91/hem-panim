@@ -30,7 +30,7 @@ function ReportsPage() {
       <div className="paper-card overflow-hidden">
         <table className="w-full text-sm">
           <thead style={{ background: "var(--paper-2)" }}>
-            <tr className="mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "var(--ink-2)" }}>
+            <tr className="mono text-[11px] uppercase tracking-[0.14em]" style={{ color: "var(--ink-2)" }}>
               <th className="text-left px-4 py-3">{t("reports.col.id")}</th>
               <th className="text-left px-4 py-3">{t("reports.col.title")}</th>
               <th className="text-left px-4 py-3">{t("reports.col.project")}</th>
@@ -89,11 +89,11 @@ function PreviewModal({ report, onClose }: { report: Report; onClose: () => void
               <div className="flex items-center gap-3">
                 <div className="w-11 h-11 cut-xs text-white grid place-items-center mono font-semibold" style={{ background: "var(--ink)" }}>HP</div>
                 <div>
-                  <div className="mono text-[11px] uppercase tracking-[0.16em] font-semibold">HEM · PANIM</div>
-                  <div className="mono text-[9px] uppercase tracking-[0.14em]" style={{ color: "var(--ink-2)" }}>PANIM Innováció Menedzsment Kft.</div>
+                  <div className="mono text-[12px] uppercase tracking-[0.16em] font-semibold">HEM · PANIM</div>
+                  <div className="mono text-[11px] uppercase tracking-[0.14em]" style={{ color: "var(--ink-2)" }}>PANIM Innováció Menedzsment Kft.</div>
                 </div>
               </div>
-              <div className="text-right mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "var(--ink-2)" }}>
+              <div className="text-right mono text-[11px] uppercase tracking-[0.14em]" style={{ color: "var(--ink-2)" }}>
                 <div>{t("reports.reportId")} <span style={{ color: "var(--ink)" }}>{report.id}</span></div>
                 <div>{t("reports.createdAt")} <span style={{ color: "var(--ink)" }}>{report.createdAt}</span></div>
                 <div>{t("reports.catalogUsed", { cat: CATALOG_LABEL })}</div>
@@ -102,20 +102,20 @@ function PreviewModal({ report, onClose }: { report: Report; onClose: () => void
             <div className="h-[2px] mb-6 w-16" style={{ background: "var(--accent)" }} />
 
             <div className="mb-6">
-              <div className="mono text-[10px] uppercase tracking-[0.22em]" style={{ color: "var(--accent)" }}>{t("reports.section")}</div>
+              <div className="mono text-[11px] uppercase tracking-[0.22em]" style={{ color: "var(--accent)" }}>{t("reports.section")}</div>
               <h1 className="text-2xl font-semibold mt-1">{report.title}</h1>
-              <div className="mono text-[11px] uppercase tracking-[0.14em] mt-2" style={{ color: "var(--ink-2)" }}>
+              <div className="mono text-[12px] uppercase tracking-[0.14em] mt-2" style={{ color: "var(--ink-2)" }}>
                 {project.id} · {project.site} · {project.measure}
               </div>
             </div>
 
             <div className="flex items-center justify-between gap-4 mb-6 p-5 cut-sm" style={{ background: "var(--paper-2)", boxShadow: "inset 0 0 0 1px var(--line)" }}>
               <div>
-                <div className="mono text-[10px] uppercase tracking-[0.16em] mb-2" style={{ color: "var(--ink-2)" }}>{t("reports.overall")}</div>
+                <div className="mono text-[11px] uppercase tracking-[0.16em] mb-2" style={{ color: "var(--ink-2)" }}>{t("reports.overall")}</div>
                 <div className={`stamp stamp-lg stamp-rotate ${project.status === "Megfelelt" ? "stamp-ok" : project.status === "Bizonytalan" ? "stamp-warn" : "stamp-fail"}`}>
                   {t(`status.${project.status}`)}
                 </div>
-                <div className="mono text-[10px] uppercase tracking-[0.14em] mt-4" style={{ color: "var(--ink-2)" }}>
+                <div className="mono text-[11px] uppercase tracking-[0.14em] mt-4" style={{ color: "var(--ink-2)" }}>
                   {t("reports.claimsEvaluated")} <span style={{ color: "var(--ink)" }}>{projClaims.length}</span>
                 </div>
               </div>
@@ -135,7 +135,7 @@ function PreviewModal({ report, onClose }: { report: Report; onClose: () => void
                 {projClaims.map((c) => (
                   <tr key={c.id} className="border-t border-[color:var(--line)]">
                     <td className="px-3 py-2">{c.text}</td>
-                    <td className="px-3 py-2 mono text-[11px] text-[color:var(--ink-2)]">{c.ruleId} <span style={{ color: "var(--accent)" }}>{ruleVersion(c.ruleId)}</span></td>
+                    <td className="px-3 py-2 mono text-[12px] text-[color:var(--ink-2)]">{c.ruleId} <span style={{ color: "var(--accent)" }}>{ruleVersion(c.ruleId)}</span></td>
                     <td className="px-3 py-2">
                       <span className={`text-xs px-2 py-1 rounded border ${statusColor(c.status)}`}>{t(`status.${c.status}`)}</span>
                     </td>
@@ -152,7 +152,7 @@ function PreviewModal({ report, onClose }: { report: Report; onClose: () => void
                 {projGaps.map((g) => (
                   <li key={g.key}>
                     <span className={`text-xs px-2 py-0.5 rounded border ${severityColor(g.severity)} mr-2`}>{t(`severity.${g.severity}`)}</span>
-                    <span className="mono text-[11px]">{g.ruleId} {ruleVersion(g.ruleId)}</span> – {g.text}
+                    <span className="mono text-[12px]">{g.ruleId} {ruleVersion(g.ruleId)}</span> – {g.text}
                     <span className="ml-2 stamp stamp-neutral">{t(`gap.status.${g.status}`)}</span>
                   </li>
                 ))}
@@ -163,7 +163,7 @@ function PreviewModal({ report, onClose }: { report: Report; onClose: () => void
             <h2 className="font-semibold mb-2 mt-8 pt-4 border-t" style={{ borderColor: "var(--line)" }}>{t("reports.appendixA")}</h2>
             <table className="w-full text-xs mb-6 border" style={{ borderColor: "var(--line)" }}>
               <thead style={{ background: "var(--paper-2)" }}>
-                <tr className="mono text-[10px] uppercase tracking-[0.12em]" style={{ color: "var(--ink-2)" }}>
+                <tr className="mono text-[11px] uppercase tracking-[0.12em]" style={{ color: "var(--ink-2)" }}>
                   <th className="text-left px-3 py-2">{t("reports.appendix.col.claim")}</th>
                   <th className="text-left px-3 py-2">{t("reports.appendix.col.evidence")}</th>
                   <th className="text-left px-3 py-2">{t("reports.appendix.col.source")}</th>
@@ -179,19 +179,19 @@ function PreviewModal({ report, onClose }: { report: Report; onClose: () => void
                       <td className="px-3 py-2 align-top">{c.text}</td>
                       <td className="px-3 py-2 align-top">
                         {evs.map((d) => (
-                          <div key={d.id} className="mono text-[11px]">{d.name}</div>
+                          <div key={d.id} className="mono text-[12px]">{d.name}</div>
                         ))}
                       </td>
-                      <td className="px-3 py-2 align-top mono text-[11px]" style={{ color: "var(--ink-2)" }}>
+                      <td className="px-3 py-2 align-top mono text-[12px]" style={{ color: "var(--ink-2)" }}>
                         {evs.map((d) => (
                           <div key={d.id}>{d.id} · {d.type}</div>
                         ))}
                       </td>
-                      <td className="px-3 py-2 align-top mono text-[11px]">
+                      <td className="px-3 py-2 align-top mono text-[12px]">
                         {c.ruleId} <span style={{ color: "var(--accent)" }}>{ruleVersion(c.ruleId)}</span>
                       </td>
                       <td className="px-3 py-2 align-top">
-                        <span className={`text-[11px] px-1.5 py-0.5 rounded border ${statusColor(c.status)}`}>{t(`status.${c.status}`)}</span>
+                        <span className={`text-[12px] px-1.5 py-0.5 rounded border ${statusColor(c.status)}`}>{t(`status.${c.status}`)}</span>
                       </td>
                     </tr>
                   );
@@ -203,7 +203,7 @@ function PreviewModal({ report, onClose }: { report: Report; onClose: () => void
             <h2 className="font-semibold mb-2">{t("reports.appendixB")}</h2>
             <table className="w-full text-xs mb-6 border" style={{ borderColor: "var(--line)" }}>
               <thead style={{ background: "var(--paper-2)" }}>
-                <tr className="mono text-[10px] uppercase tracking-[0.12em]" style={{ color: "var(--ink-2)" }}>
+                <tr className="mono text-[11px] uppercase tracking-[0.12em]" style={{ color: "var(--ink-2)" }}>
                   <th className="text-left px-3 py-2">{t("rules.col.id")}</th>
                   <th className="text-left px-3 py-2">{t("rules.col.version")}</th>
                   <th className="text-left px-3 py-2">{t("rules.col.name")}</th>
@@ -218,11 +218,11 @@ function PreviewModal({ report, onClose }: { report: Report; onClose: () => void
                   const derived = outcome ? outcome.status : claimForRule ? (claimForRule.status === "Megfelelt" ? "Pass" : claimForRule.status === "Bizonytalan" ? "Warning" : "Fail") : "Pass";
                   return (
                     <tr key={rid} className="border-t" style={{ borderColor: "var(--line)" }}>
-                      <td className="px-3 py-2 mono text-[11px] font-medium" style={{ color: "var(--accent)" }}>{rid}</td>
-                      <td className="px-3 py-2 mono text-[11px]">{ruleVersion(rid)}</td>
+                      <td className="px-3 py-2 mono text-[12px] font-medium" style={{ color: "var(--accent)" }}>{rid}</td>
+                      <td className="px-3 py-2 mono text-[12px]">{ruleVersion(rid)}</td>
                       <td className="px-3 py-2">{r?.name ?? "—"}</td>
                       <td className="px-3 py-2">
-                        <span className={`text-[11px] px-1.5 py-0.5 rounded border ${outcomeColor(derived as "Pass" | "Warning" | "Fail")}`}>{t(`outcome.${derived}`)}</span>
+                        <span className={`text-[12px] px-1.5 py-0.5 rounded border ${outcomeColor(derived as "Pass" | "Warning" | "Fail")}`}>{t(`outcome.${derived}`)}</span>
                       </td>
                     </tr>
                   );
@@ -231,7 +231,7 @@ function PreviewModal({ report, onClose }: { report: Report; onClose: () => void
             </table>
 
             <div className="border-t pt-4 space-y-1" style={{ borderColor: "var(--line)" }}>
-              <div className="mono text-[10px] uppercase tracking-[0.14em]" style={{ color: "var(--ink-2)" }}>
+              <div className="mono text-[11px] uppercase tracking-[0.14em]" style={{ color: "var(--ink-2)" }}>
                 {t("reports.catalogUsed", { cat: `v${CATALOG_VERSION}` })}
               </div>
               <div className="text-xs italic" style={{ color: "var(--ink-2)" }}>

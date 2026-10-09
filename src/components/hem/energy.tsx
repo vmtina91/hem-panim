@@ -25,7 +25,7 @@ export function Ruler({
       {(label || showValue) && (
         <div className="flex items-end justify-between mb-3">
           {label && (
-            <div className="text-[10px] uppercase tracking-[0.16em]" style={{ color: "var(--ink-2)" }}>
+            <div className="text-[11px] uppercase tracking-[0.16em]" style={{ color: "var(--ink-2)" }}>
               {label}
             </div>
           )}
@@ -70,7 +70,7 @@ export function Ruler({
             <div style={{ width: 1, height: 6, background: "var(--ink-2)" }} />
             <div style={{ width: 1, height: height / 2 - 12, background: "var(--line-2)" }} />
             <div
-              className="mono absolute text-[9px] uppercase tracking-[0.1em]"
+              className="mono absolute text-[11px] uppercase tracking-[0.1em]"
               style={{ bottom: -18, color: "var(--ink-2)" }}
             >
               {t}
@@ -103,7 +103,7 @@ export function Ruler({
             }}
           />
           <div
-            className="mono absolute text-[9px] uppercase tracking-[0.12em] font-medium"
+            className="mono absolute text-[11px] uppercase tracking-[0.12em] font-medium"
             style={{ top: -14, transform: "translateX(-50%)", color: accent, whiteSpace: "nowrap" }}
           >
             {clamped}%
@@ -248,10 +248,10 @@ export function HeroInstrument({
     <div className="hero-instrument p-8">
       <div className="flex items-start justify-between mb-8 relative z-10">
         <div>
-          <div className="mono text-[10px] uppercase tracking-[0.22em]" style={{ color: "#22D3EE" }}>
+          <div className="mono text-[11px] uppercase tracking-[0.22em]" style={{ color: "#22D3EE" }}>
             {label}
           </div>
-          <div className="mono text-[10px] uppercase tracking-[0.14em] mt-2" style={{ color: "rgba(255,255,255,0.55)" }}>
+          <div className="mono text-[11px] uppercase tracking-[0.14em] mt-2" style={{ color: "rgba(255,255,255,0.55)" }}>
             N = {ruleCount}
           </div>
         </div>
@@ -285,7 +285,7 @@ export function HeroInstrument({
           >
             <div style={{ width: 1, height: tk % 50 === 0 ? 20 : 12, background: tk % 50 === 0 ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.18)" }} />
             {tk % 50 === 0 && (
-              <div className="mono absolute text-[9px] uppercase tracking-[0.1em]" style={{ top: 24, transform: "translateX(-50%)", color: "rgba(255,255,255,0.5)" }}>
+              <div className="mono absolute text-[11px] uppercase tracking-[0.1em]" style={{ top: 24, transform: "translateX(-50%)", color: "rgba(255,255,255,0.5)" }}>
                 {tk}
               </div>
             )}
@@ -325,10 +325,10 @@ export function HeroInstrument({
       {/* Distribution stacked bar */}
       <div className="mt-8 relative z-10">
         <div className="flex items-center justify-between mb-2">
-          <div className="mono text-[10px] uppercase tracking-[0.16em]" style={{ color: "rgba(255,255,255,0.55)" }}>
+          <div className="mono text-[11px] uppercase tracking-[0.16em]" style={{ color: "rgba(255,255,255,0.55)" }}>
             Megoszlás
           </div>
-          <div className="mono text-[10px]" style={{ color: "rgba(255,255,255,0.55)" }}>
+          <div className="mono text-[11px]" style={{ color: "rgba(255,255,255,0.55)" }}>
             {total}
           </div>
         </div>
@@ -337,7 +337,7 @@ export function HeroInstrument({
           <div style={{ width: `${warnPct}%`, background: "#E8A013" }} />
           <div style={{ width: `${failPct}%`, background: "#D64545" }} />
         </div>
-        <div className="mt-3 grid grid-cols-3 gap-4 text-[11px]" style={{ color: "rgba(255,255,255,0.75)" }}>
+        <div className="mt-3 grid grid-cols-3 gap-4 text-[12px]" style={{ color: "rgba(255,255,255,0.75)" }}>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full" style={{ background: "#1E9E5A" }} />
             <span className="mono uppercase tracking-[0.08em]">{okLabel}</span>
@@ -406,7 +406,7 @@ export function RatingBadge({ score }: { score: number }) {
         <div className="mono tabular-nums font-semibold leading-none" style={{ fontSize: 36, color: "var(--ink)" }}>
           {score}<span className="text-[16px] font-normal" style={{ color: "var(--ink-2)" }}>%</span>
         </div>
-        <div className="mono text-[10px] uppercase tracking-[0.16em] mt-1" style={{ color: "var(--ink-2)" }}>
+        <div className="mono text-[11px] uppercase tracking-[0.16em] mt-1" style={{ color: "var(--ink-2)" }}>
           {tier.label}
         </div>
       </div>
@@ -420,7 +420,7 @@ export function RatingBadge({ score }: { score: number }) {
 export function GridHeroBanner({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
     <div className="paper-card px-5 py-4 mb-6">
-      <div className="mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>Panel</div>
+      <div className="mono text-[11px] uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>Panel</div>
       <div className="text-[16px] font-semibold mt-1">{title}</div>
       {subtitle && <div className="text-xs mt-1" style={{ color: "var(--ink-2)" }}>{subtitle}</div>}
     </div>

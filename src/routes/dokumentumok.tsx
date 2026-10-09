@@ -236,11 +236,11 @@ function DocsPage() {
                       ))}
                     </select>
                     {p.autoDetected ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] px-2 py-1 rounded border bg-blue-50 text-blue-700 border-blue-200">
+                      <span className="inline-flex items-center gap-1 text-[12px] px-2 py-1 rounded border bg-blue-50 text-blue-700 border-blue-200">
                         <Sparkles className="w-3 h-3" /> {t("documents.classify.auto", { c: p.confidence })}
                       </span>
                     ) : (
-                      <span className={`text-[11px] px-2 py-1 rounded border ${p.confidence >= 99 ? "bg-emerald-50 text-emerald-700 border-emerald-200" : "bg-amber-50 text-amber-800 border-amber-200"}`}>
+                      <span className={`text-[12px] px-2 py-1 rounded border ${p.confidence >= 99 ? "bg-emerald-50 text-emerald-700 border-emerald-200" : "bg-amber-50 text-amber-800 border-amber-200"}`}>
                         {p.confidence >= 99 ? t("documents.classify.manual") : t("documents.classify.uncertain")}
                       </span>
                     )}
@@ -416,7 +416,7 @@ function DocDrawer({
                       <div className="min-w-0 flex-1">
                         <div className="text-xs text-[color:var(--ink-2)]">{f.name}</div>
                         <div className="font-medium text-sm text-[color:var(--ink)] truncate">{f.value}</div>
-                        <div className="text-[11px] text-[color:var(--ink-2)] mt-1">{t("documents.drawer.source", { s: f.source })}</div>
+                        <div className="text-[12px] text-[color:var(--ink-2)] mt-1">{t("documents.drawer.source", { s: f.source })}</div>
                       </div>
                       <div className="text-right shrink-0">
                         <div className={`text-xs font-semibold ${confidenceColor(f.confidence)}`}>{f.confidence}%</div>
@@ -438,7 +438,7 @@ function DocDrawer({
                           {t("btn.approve")}
                         </button>
                       ) : (
-                        <span className="text-[11px] text-[color:var(--ink-2)]/70 inline-flex items-center gap-1">
+                        <span className="text-[12px] text-[color:var(--ink-2)]/70 inline-flex items-center gap-1">
                           <Lock className="w-3 h-3" /> {t("documents.drawer.noRight")}
                         </span>
                       )}
@@ -447,7 +447,7 @@ function DocDrawer({
                 );
               })}
             </div>
-            <div className="text-[11px] text-[color:var(--ink-2)] mt-4">{t("documents.drawer.hint")}</div>
+            <div className="text-[12px] text-[color:var(--ink-2)] mt-4">{t("documents.drawer.hint")}</div>
           </div>
         </div>
       </div>

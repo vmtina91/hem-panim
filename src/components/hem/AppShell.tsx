@@ -1,6 +1,7 @@
 import { Link, Navigate, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { LogOut, ChevronDown, HelpCircle, User as UserIcon, Settings, Sun, Moon } from "lucide-react";
+import { LogOut, ChevronDown, HelpCircle, User as UserIcon, Settings, Sun, Moon, Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useAuth, roleLabel } from "@/lib/auth";
 import { useI18n } from "@/lib/i18n";
 import { Assistant } from "@/components/hem/Assistant";
@@ -68,6 +69,8 @@ export function AppShell({
   const { t, formatDate } = useI18n();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+  useEffect(() => setNavOpen(false), [pathname]);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -111,49 +114,35 @@ export function AppShell({
     <div className="min-h-screen flex w-full text-[color:var(--ink)] blueprint-bg">
       {/* SIDEBAR */}
       <aside
-        className="w-[248px] shrink-0 flex flex-col sticky top-0 h-screen rail-dark"
+        className="hidden md:flex w-[248px] shrink-0 flex-col sticky top-0 h-screen rail-dark"
       >
-        <div className="px-5 pt-5 pb-4 rail-divider border-b">
-          <div className="bg-white p-3 flex items-center justify-center rounded-md" style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.15)" }}>
-            <img src={panimLogo.url} alt="PANIM" className="max-h-11 w-auto object-contain" />
-          </div>
-          <div className="mt-3 mono text-[10px] tracking-[0.22em] uppercase font-semibold rail-label">
-            HEM PANIM
-          </div>
-        </div>
-
-        <nav className="flex-1 py-3 overflow-y-auto">
-          {(() => {
-            let displayIdx = 0;
-            return NAV_KEYS.map((n) => {
-              const active = "exact" in n && n.exact ? pathname === n.to : pathname.startsWith(n.to) && (n.to !== "/" || pathname === "/");
-              const numberLabel = n.numbered ? pad2(++displayIdx) : "";
-              return (
-                <Link key={n.to} to={n.to} className={`nav-item ${active ? "is-active" : ""}`}>
-                  <span className="nav-index mono w-5 shrink-0">{numberLabel}</span>
-                  <span className="truncate flex-1">{t(n.key)}</span>
-                </Link>
-              );
-            });
-          })()}
-        </nav>
-
-
-        <div className="rail-divider border-t py-3">
-          <div className="px-5 mono text-[9px] tracking-[0.18em] uppercase rail-label" style={{ opacity: 0.7 }}>
-            {t("footer.trl")}
-          </div>
-        </div>
+        <SidebarContent pathname={pathname} t={t} />
       </aside>
 
+
+      <Sheet open={navOpen} onOpenChange={setNavOpen}>
+        <SheetContent side="left" className="w-[280px] p-0 flex flex-col rail-dark border-0">
+          <SheetTitle className="sr-only">{t("nav.dashboard")}</SheetTitle>
+          <SheetDescription className="sr-only">HEM PANIM</SheetDescription>
+          <SidebarContent pathname={pathname} t={t} />
+        </SheetContent>
+      </Sheet>
 
       {/* MAIN COLUMN */}
       <div className="flex-1 flex flex-col min-w-0">
         <header
-          className="h-14 border-b flex items-center px-6 gap-4 sticky top-0 z-30"
+          className="h-14 border-b flex items-center px-4 md:px-6 gap-2 md:gap-4 sticky top-0 z-30"
           style={{ background: "var(--band-bg)", backdropFilter: "blur(6px)", borderColor: "var(--line)" }}
         >
-          <nav aria-label="Breadcrumb" className="flex items-center mono text-[10px] uppercase tracking-[0.14em] min-w-0" style={{ color: "var(--ink-2)" }}>
+          <button
+            onClick={() => setNavOpen(true)}
+            aria-label={t("nav.dashboard")}
+            className="md:hidden w-11 h-11 -ml-2 grid place-items-center shrink-0"
+            style={{ color: "var(--ink)" }}
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+          <nav aria-label="Breadcrumb" className="flex items-center mono text-[11px] uppercase tracking-[0.14em] min-w-0" style={{ color: "var(--ink-2)" }}>
             {crumbs.map((c, i) => (
               <span key={i} className="flex items-center min-w-0">
                 {i > 0 && <span className="mx-2 opacity-40">/</span>}
@@ -168,19 +157,19 @@ export function AppShell({
 
           <div className="ml-auto flex items-center gap-3">
             <ThemeToggle />
-            <Link to="/sugo" title={t("topbar.help")} className="w-8 h-8 grid place-items-center transition-colors" style={{ color: "var(--ink-2)" }}>
+            <Link to="/sugo" title={t("topbar.help")} className="w-11 h-11 md:w-8 md:h-8 grid place-items-center transition-colors" style={{ color: "var(--ink-2)" }}>
               <HelpCircle className="w-4 h-4" />
             </Link>
             <div className="relative" ref={menuRef}>
               <button
                 onClick={() => setMenuOpen((o) => !o)}
-                className="flex items-center gap-2 pl-1 pr-2 py-1 hover:bg-[color:var(--paper-2)] transition-colors cut-xs"
+                className="flex items-center gap-2 pl-1 pr-2 py-1 min-h-11 md:min-h-0 hover:bg-[color:var(--paper-2)] transition-colors cut-xs"
               >
                 {user.avatarUrl ? (
                   <img src={user.avatarUrl} alt={user.name} className="w-8 h-8 object-cover cut-xs" />
                 ) : (
                   <div
-                    className="w-8 h-8 grid place-items-center text-white text-[11px] font-semibold cut-xs mono"
+                    className="w-8 h-8 grid place-items-center text-white text-[12px] font-semibold cut-xs mono"
                     style={{ background: colorFromString(user.name || user.email) }}
                   >
                     {initials(user.name)}
@@ -188,7 +177,7 @@ export function AppShell({
                 )}
                 <div className="hidden md:block text-left leading-tight">
                   <div className="text-[12px] font-medium">{user.name}</div>
-                  <div className="mono text-[9px] uppercase tracking-[0.14em]" style={{ color: "var(--ink-2)" }}>
+                  <div className="mono text-[11px] uppercase tracking-[0.14em]" style={{ color: "var(--ink-2)" }}>
                     {roleLabel(user.role, t)}
                   </div>
                 </div>
@@ -198,8 +187,8 @@ export function AppShell({
                 <div className="absolute right-0 top-full mt-2 w-64 bg-white z-40 py-1 fade-slide paper-card">
                   <div className="px-4 py-3 border-b" style={{ borderColor: "var(--line)" }}>
                     <div className="text-sm font-medium">{user.name}</div>
-                    <div className="mono text-[10px] uppercase tracking-[0.1em]" style={{ color: "var(--ink-2)" }}>{user.email}</div>
-                    <div className="mono text-[10px] uppercase tracking-[0.14em] mt-1" style={{ color: "var(--accent)" }}>
+                    <div className="mono text-[11px] uppercase tracking-[0.1em]" style={{ color: "var(--ink-2)" }}>{user.email}</div>
+                    <div className="mono text-[11px] uppercase tracking-[0.14em] mt-1" style={{ color: "var(--accent)" }}>
                       {roleLabel(user.role, t)}
                     </div>
                   </div>
@@ -232,10 +221,10 @@ export function AppShell({
 
         {/* Page header band */}
         <div className="border-b" style={{ borderColor: "var(--line)", background: "var(--band-bg-soft)" }}>
-          <div className="max-w-[1600px] mx-auto px-6 py-6">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-6 py-6">
             <div className="flex items-start justify-between gap-4 flex-wrap">
               <div className="min-w-0">
-                <div className="mono text-[11px] uppercase tracking-[0.08em] font-semibold mb-2" style={{ color: "var(--ink-2)" }}>
+                <div className="mono text-[12px] uppercase tracking-[0.08em] font-semibold mb-2" style={{ color: "var(--ink-2)" }}>
                   {crumbs[crumbs.length - 1]?.label ?? ""}
                 </div>
                 <h1 className="text-[30px] leading-tight font-bold tracking-tight" style={{ color: "var(--ink)" }}>
@@ -245,10 +234,10 @@ export function AppShell({
               </div>
               <div className="flex items-center gap-3">
                 {actions}
-                <div className="hidden md:flex items-center gap-2.5 mono text-[11px] tracking-[0.04em] text-right leading-tight" style={{ color: "var(--ink-2)" }}>
+                <div className="hidden md:flex items-center gap-2.5 mono text-[12px] tracking-[0.04em] text-right leading-tight" style={{ color: "var(--ink-2)" }}>
                   <span className="pulse-live" aria-hidden />
                   <div>
-                    <div className="uppercase tracking-[0.08em] text-[10px] font-semibold">{t("topbar.systemTime")}</div>
+                    <div className="uppercase tracking-[0.08em] text-[11px] font-semibold">{t("topbar.systemTime")}</div>
                     <div style={{ color: "var(--ink)" }}>{dateStr} · {timeStr}</div>
                   </div>
                 </div>
@@ -261,13 +250,13 @@ export function AppShell({
         </div>
 
         <main className="flex-1 overflow-auto relative" key={pathname}>
-          <div className="max-w-[1600px] mx-auto px-6 py-6 page-in">{children}</div>
+          <div className="max-w-[1600px] mx-auto px-4 md:px-6 py-6 page-in">{children}</div>
         </main>
 
         <Assistant />
 
         <footer
-          className="border-t px-6 py-3 mono text-[10px] uppercase tracking-[0.14em] flex flex-wrap items-center gap-x-4 gap-y-1"
+          className="border-t px-4 md:px-6 py-3 mono text-[11px] uppercase tracking-[0.14em] flex flex-wrap items-center gap-x-4 gap-y-1"
           style={{ borderColor: "var(--line)", color: "var(--ink-2)", background: "var(--band-bg-soft)" }}
         >
           <span>{t("footer.copyright")}</span>
@@ -276,6 +265,44 @@ export function AppShell({
         </footer>
       </div>
     </div>
+  );
+}
+
+function SidebarContent({ pathname, t }: { pathname: string; t: (k: string) => string }) {
+  return (
+    <>
+      <div className="px-5 pt-5 pb-4 rail-divider border-b">
+        <div className="bg-white p-3 flex items-center justify-center rounded-md" style={{ boxShadow: "0 1px 2px rgba(0,0,0,0.15)" }}>
+          <img src={panimLogo.url} alt="PANIM" className="max-h-11 w-auto object-contain" />
+        </div>
+        <div className="mt-3 mono text-[11px] tracking-[0.22em] uppercase font-semibold rail-label">
+          HEM PANIM
+        </div>
+      </div>
+
+      <nav className="flex-1 py-3 overflow-y-auto">
+        {(() => {
+          let displayIdx = 0;
+          return NAV_KEYS.map((n) => {
+            const active = "exact" in n && n.exact ? pathname === n.to : pathname.startsWith(n.to) && (n.to !== "/" || pathname === "/");
+            const numberLabel = n.numbered ? pad2(++displayIdx) : "";
+            return (
+              <Link key={n.to} to={n.to} className={`nav-item ${active ? "is-active" : ""}`}>
+                <span className="nav-index mono w-5 shrink-0">{numberLabel}</span>
+                <span className="truncate flex-1">{t(n.key)}</span>
+              </Link>
+            );
+          });
+        })()}
+      </nav>
+
+
+      <div className="rail-divider border-t py-3">
+        <div className="px-5 mono text-[11px] tracking-[0.18em] uppercase rail-label" style={{ opacity: 0.7 }}>
+          {t("footer.trl")}
+        </div>
+      </div>
+    </>
   );
 }
 

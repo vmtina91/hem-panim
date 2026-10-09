@@ -93,14 +93,14 @@ function PreQual() {
       <div className="paper-card p-6 mb-4">
         <div className="flex items-baseline justify-between mb-3">
           <div>
-            <div className="mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>{t("prequal.summary")}</div>
+            <div className="mono text-[11px] uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>{t("prequal.summary")}</div>
             <div className="mono tabular-nums font-semibold leading-none mt-2" style={{ fontSize: 48, color: "var(--ink)" }}>
               {score}<span className="text-[20px] font-normal" style={{ color: "var(--ink-2)" }}>%</span>
             </div>
           </div>
           <span className={statusColor(project.status)}>{t(`status.${project.status}`)}</span>
         </div>
-        <div className="mono text-[10px] uppercase tracking-[0.14em] mb-4 flex flex-wrap gap-x-4 gap-y-1" style={{ color: "var(--ink-2)" }}>
+        <div className="mono text-[11px] uppercase tracking-[0.14em] mb-4 flex flex-wrap gap-x-4 gap-y-1" style={{ color: "var(--ink-2)" }}>
           <span>{t("prequal.runMeta", { cat: CATALOG_VERSION })}</span>
           {runAt && <span>{t("prequal.runAt", { when: runAt })}</span>}
         </div>
@@ -134,20 +134,20 @@ function PreQual() {
                   <div className="p-4 border-t" style={{ borderColor: "var(--line)", background: "var(--paper-2)" }}>
                     <div className="flex items-stretch gap-1 overflow-x-auto pb-2">
                       <div className="min-w-[200px] p-3 cut-xs bg-white text-xs" style={{ boxShadow: "inset 0 0 0 1px var(--line)" }}>
-                        <div className="mono uppercase tracking-[0.16em] text-[10px] mb-1" style={{ color: "var(--accent)" }}>{t("prequal.chain.claim")}</div>
+                        <div className="mono uppercase tracking-[0.16em] text-[11px] mb-1" style={{ color: "var(--accent)" }}>{t("prequal.chain.claim")}</div>
                         <div>{c.text}</div>
                       </div>
                       <SchematicConnector label={t("prequal.chain.support")} width={110} />
                       <div className="min-w-[220px] p-3 cut-xs bg-white text-xs" style={{ boxShadow: "inset 0 0 0 1px var(--line)" }}>
-                        <div className="mono uppercase tracking-[0.16em] text-[10px] mb-1" style={{ color: "var(--accent)" }}>{t("prequal.chain.evidence")}</div>
+                        <div className="mono uppercase tracking-[0.16em] text-[11px] mb-1" style={{ color: "var(--accent)" }}>{t("prequal.chain.evidence")}</div>
                         {evs.map((d) => (
-                          <div key={d.id} className="mono text-[11px]">{d.name}</div>
+                          <div key={d.id} className="mono text-[12px]">{d.name}</div>
                         ))}
                       </div>
                       <SchematicConnector label={t("prequal.chain.applies")} width={110} />
                       <div className="min-w-[220px] p-3 cut-xs text-xs" style={{ boxShadow: "inset 0 0 0 1px var(--line)", background: "var(--paper)" }}>
-                        <div className="mono uppercase tracking-[0.16em] text-[10px] mb-1" style={{ color: "var(--accent)" }}>{t("prequal.chain.rule")}</div>
-                        <div className="mono text-[11px] font-medium">{rule?.id} – {rule?.name}</div>
+                        <div className="mono uppercase tracking-[0.16em] text-[11px] mb-1" style={{ color: "var(--accent)" }}>{t("prequal.chain.rule")}</div>
+                        <div className="mono text-[12px] font-medium">{rule?.id} – {rule?.name}</div>
                       </div>
                     </div>
                     <p className="text-xs text-[color:var(--ink-2)] mt-3 italic">{c.explanation}</p>
@@ -212,10 +212,10 @@ function PreQual() {
                     <span className="stamp stamp-neutral">{t(`gap.status.${g.status}`)}</span>
                     <div className="flex-1 text-sm min-w-[240px]">
                       <span className="font-medium mono text-[12px]" style={{ color: "var(--accent)" }}>{g.ruleId}</span>
-                      <span className="mono text-[10px] ml-1" style={{ color: "var(--ink-2)" }}>{ruleVersion(g.ruleId)}</span>
+                      <span className="mono text-[11px] ml-1" style={{ color: "var(--ink-2)" }}>{ruleVersion(g.ruleId)}</span>
                       <span className="ml-2">– {g.text}</span>
                       {g.assignee && (
-                        <div className="text-[11px] mt-1" style={{ color: "var(--ink-2)" }}>{t("gap.assignee")} <span style={{ color: "var(--ink)" }}>{g.assignee}</span></div>
+                        <div className="text-[12px] mt-1" style={{ color: "var(--ink-2)" }}>{t("gap.assignee")} <span style={{ color: "var(--ink)" }}>{g.assignee}</span></div>
                       )}
                     </div>
                     {permissions.canApprove ? (
@@ -320,7 +320,7 @@ function PreQual() {
                 return (
                   <li key={i} className="flex items-center gap-3 text-sm">
                     <div
-                      className={`w-6 h-6 cut-xs flex items-center justify-center mono text-[11px] border ${
+                      className={`w-6 h-6 cut-xs flex items-center justify-center mono text-[12px] border ${
                         done
                           ? "bg-[color:var(--ink)] border-[color:var(--ink)] text-white"
                           : active

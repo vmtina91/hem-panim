@@ -127,7 +127,7 @@ function ProfilePage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Personal data */}
         <div className="lg:col-span-2 paper-card p-6">
-          <div className="mono text-[10px] uppercase tracking-[0.2em] mb-4" style={{ color: "var(--accent)" }}>
+          <div className="mono text-[11px] uppercase tracking-[0.2em] mb-4" style={{ color: "var(--accent)" }}>
             ── {t("profile.section.personal")}
           </div>
 
@@ -149,7 +149,7 @@ function ProfilePage() {
               </div>
             )}
             <div className="flex-1">
-              <div className="mono text-[10px] uppercase tracking-[0.16em] mb-1.5" style={{ color: "var(--ink-2)" }}>
+              <div className="mono text-[11px] uppercase tracking-[0.16em] mb-1.5" style={{ color: "var(--ink-2)" }}>
                 {t("profile.avatar")}
               </div>
               <div className="flex items-center gap-2">
@@ -174,7 +174,7 @@ function ProfilePage() {
                   onChange={handleUpload}
                 />
               </div>
-              <div className="mono text-[10px] mt-1.5" style={{ color: "var(--ink-2)" }}>
+              <div className="mono text-[11px] mt-1.5" style={{ color: "var(--ink-2)" }}>
                 {t("profile.avatar.hint")}
               </div>
             </div>
@@ -225,7 +225,7 @@ function ProfilePage() {
 
         {/* App settings */}
         <div className="paper-card p-6 self-start">
-          <div className="mono text-[10px] uppercase tracking-[0.2em] mb-4" style={{ color: "var(--accent)" }}>
+          <div className="mono text-[11px] uppercase tracking-[0.2em] mb-4" style={{ color: "var(--accent)" }}>
             ── {t("profile.section.app")}
           </div>
 
@@ -280,11 +280,11 @@ const inputCls =
 function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block mono text-[10px] uppercase tracking-[0.16em] mb-1.5" style={{ color: "var(--ink-2)" }}>
+      <label className="block mono text-[11px] uppercase tracking-[0.16em] mb-1.5" style={{ color: "var(--ink-2)" }}>
         {label}
       </label>
       {children}
-      {hint && <div className="mono text-[10px] mt-1" style={{ color: "var(--ink-2)" }}>{hint}</div>}
+      {hint && <div className="mono text-[11px] mt-1" style={{ color: "var(--ink-2)" }}>{hint}</div>}
     </div>
   );
 }

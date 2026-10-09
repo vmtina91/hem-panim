@@ -68,7 +68,7 @@ function MeasurementsPage() {
       {tab === "post" && <MeasurementTable rows={postRows} />}
       {tab === "saving" && saving && (
         <div className="paper-card p-6">
-          <div className="mono text-[10px] uppercase tracking-[0.2em] mb-2" style={{ color: "var(--accent)" }}>{t("meas.formula")}</div>
+          <div className="mono text-[11px] uppercase tracking-[0.2em] mb-2" style={{ color: "var(--accent)" }}>{t("meas.formula")}</div>
           <div className="mono text-[14px] mb-6 flex flex-wrap items-baseline gap-2 tabular-nums" style={{ color: "var(--ink)" }}>
             <span>{formatNumber(saving.baselineValue)} {saving.unit}</span>
             <span style={{ color: "var(--ink-2)" }}>−</span>
@@ -77,24 +77,24 @@ function MeasurementsPage() {
             <span className="font-semibold" style={{ color: "var(--accent)" }}>
               {formatNumber(saving.savingValue)} {saving.unit}
             </span>
-            <span className="text-[11px] mono uppercase tracking-[0.14em] ml-2" style={{ color: "var(--ink-2)" }}>{t("meas.saving")}</span>
+            <span className="text-[12px] mono uppercase tracking-[0.14em] ml-2" style={{ color: "var(--ink-2)" }}>{t("meas.saving")}</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <div className="mono text-[10px] uppercase tracking-[0.16em] mb-1" style={{ color: "var(--ink-2)" }}>{t("meas.method")}</div>
+              <div className="mono text-[11px] uppercase tracking-[0.16em] mb-1" style={{ color: "var(--ink-2)" }}>{t("meas.method")}</div>
               <div className="text-sm">{saving.method}</div>
               {saving.note && <div className="text-xs mt-2 italic" style={{ color: "var(--ink-2)" }}>{saving.note}</div>}
             </div>
             <div>
-              <div className="mono text-[10px] uppercase tracking-[0.16em] mb-1" style={{ color: "var(--ink-2)" }}>{t("meas.rules")}</div>
+              <div className="mono text-[11px] uppercase tracking-[0.16em] mb-1" style={{ color: "var(--ink-2)" }}>{t("meas.rules")}</div>
               <ul className="space-y-1">
                 {saving.ruleIds.map((rid) => {
                   const r = rules.find((x) => x.id === rid);
                   return (
                     <li key={rid} className="text-sm flex items-center gap-2">
                       <span className="mono text-[12px] font-medium" style={{ color: "var(--accent)" }}>{rid}</span>
-                      <span className="mono text-[10px] px-1.5 py-0.5 cut-xs" style={{ background: "var(--paper-2)", boxShadow: "inset 0 0 0 1px var(--line)", color: "var(--ink-2)" }}>{ruleVersion(rid)}</span>
+                      <span className="mono text-[11px] px-1.5 py-0.5 cut-xs" style={{ background: "var(--paper-2)", boxShadow: "inset 0 0 0 1px var(--line)", color: "var(--ink-2)" }}>{ruleVersion(rid)}</span>
                       <span style={{ color: "var(--ink-2)" }}>{r?.name ?? ""}</span>
                     </li>
                   );
@@ -153,7 +153,7 @@ function Row({ r }: { r: MeasurementRecord }) {
       </td>
       <td className="px-4 py-3">
         <span className={evidenceStatusStamp(r.evidenceStatus)}>{r.evidenceStatus}</span>
-        {r.note && <div className="text-[11px] mt-1 italic" style={{ color: "var(--ink-2)" }}>{r.note}</div>}
+        {r.note && <div className="text-[12px] mt-1 italic" style={{ color: "var(--ink-2)" }}>{r.note}</div>}
       </td>
     </tr>
   );

@@ -28,7 +28,7 @@ export function KpiCard({
   return (
     <div className="paper-card paper-card-hover p-6 fade-slide relative">
       <div className="flex items-start justify-between gap-3">
-        <div className="mono text-[11px] uppercase tracking-[0.08em] font-semibold" style={{ color: "var(--ink-2)" }}>
+        <div className="mono text-[12px] uppercase tracking-[0.08em] font-semibold" style={{ color: "var(--ink-2)" }}>
           {label}
         </div>
         <Icon className="w-4 h-4" style={{ color: "var(--ink-2)" }} />

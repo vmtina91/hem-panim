@@ -80,9 +80,9 @@ function RuleDrawer({ rule, onClose }: { rule: Rule; onClose: () => void }) {
             <div className="text-xs text-[color:var(--ink-2)]">{rule.id}</div>
             <h2 className="font-semibold text-lg">{rule.name}</h2>
             <div className="flex flex-wrap items-center gap-2 mt-2">
-              <span className="mono text-[11px] px-1.5 py-0.5 cut-xs" style={{ background: "var(--paper-2)", boxShadow: "inset 0 0 0 1px var(--line)", color: "var(--ink)" }}>{ruleVersion(rule.id)}</span>
-              <span className={`text-[11px] px-2 py-0.5 rounded border ${severityColor(rule.severity)}`}>{t(`severity.${rule.severity}`)}</span>
-              <span className="text-[11px] px-2 py-0.5 rounded bg-[color:var(--paper-2)] text-[color:var(--ink)] border border-[color:var(--line)]">{t(`ruleType.${rule.type}`)}</span>
+              <span className="mono text-[12px] px-1.5 py-0.5 cut-xs" style={{ background: "var(--paper-2)", boxShadow: "inset 0 0 0 1px var(--line)", color: "var(--ink)" }}>{ruleVersion(rule.id)}</span>
+              <span className={`text-[12px] px-2 py-0.5 rounded border ${severityColor(rule.severity)}`}>{t(`severity.${rule.severity}`)}</span>
+              <span className="text-[12px] px-2 py-0.5 rounded bg-[color:var(--paper-2)] text-[color:var(--ink)] border border-[color:var(--line)]">{t(`ruleType.${rule.type}`)}</span>
             </div>
             <div className="text-xs text-[color:var(--ink-2)] mt-2">{rule.source}</div>
           </div>
@@ -99,11 +99,11 @@ function RuleDrawer({ rule, onClose }: { rule: Rule; onClose: () => void }) {
         {rule.ontologyClass && (
           <section className="mb-4 grid grid-cols-2 gap-3 text-sm">
             <div>
-              <div className="text-[11px] uppercase tracking-wide text-[color:var(--ink-2)] mb-1">{t("rules.detail.class")}</div>
+              <div className="text-[12px] uppercase tracking-wide text-[color:var(--ink-2)] mb-1">{t("rules.detail.class")}</div>
               <div className="font-medium text-[color:var(--ink)]">{rule.ontologyClass}</div>
             </div>
             <div>
-              <div className="text-[11px] uppercase tracking-wide text-[color:var(--ink-2)] mb-1">{t("rules.detail.evidence")}</div>
+              <div className="text-[12px] uppercase tracking-wide text-[color:var(--ink-2)] mb-1">{t("rules.detail.evidence")}</div>
               <div className="text-[color:var(--ink)]">{rule.evidence}</div>
             </div>
           </section>
@@ -114,7 +114,7 @@ function RuleDrawer({ rule, onClose }: { rule: Rule; onClose: () => void }) {
             <div className="flex items-start gap-2 border border-[#D64545]/40 bg-[#FBE6E6] text-[#7A1D1D] rounded-md p-3">
               <AlertOctagon className="w-4 h-4 mt-0.5 shrink-0" />
               <div className="text-sm">
-                <div className="text-[11px] uppercase tracking-wide font-semibold mb-0.5">{t("rules.detail.errorMsg")}</div>
+                <div className="text-[12px] uppercase tracking-wide font-semibold mb-0.5">{t("rules.detail.errorMsg")}</div>
                 <div>{rule.errorMessage}</div>
               </div>
             </div>
@@ -154,8 +154,8 @@ ELSE status := HIÁNYOS`}
           <ul className="space-y-1.5">
             {ruleHistory(rule.id).map((v) => (
               <li key={v.version} className="flex items-start gap-3 text-sm">
-                <span className={`mono text-[11px] px-1.5 py-0.5 cut-xs shrink-0 ${v.version === ruleVersion(rule.id) ? "font-semibold" : ""}`} style={{ background: v.version === ruleVersion(rule.id) ? "var(--accent)" : "var(--paper-2)", color: v.version === ruleVersion(rule.id) ? "white" : "var(--ink)", boxShadow: v.version === ruleVersion(rule.id) ? "none" : "inset 0 0 0 1px var(--line)" }}>{v.version}</span>
-                <span className="mono text-[11px] shrink-0" style={{ color: "var(--ink-2)" }}>{v.date}</span>
+                <span className={`mono text-[12px] px-1.5 py-0.5 cut-xs shrink-0 ${v.version === ruleVersion(rule.id) ? "font-semibold" : ""}`} style={{ background: v.version === ruleVersion(rule.id) ? "var(--accent)" : "var(--paper-2)", color: v.version === ruleVersion(rule.id) ? "white" : "var(--ink)", boxShadow: v.version === ruleVersion(rule.id) ? "none" : "inset 0 0 0 1px var(--line)" }}>{v.version}</span>
+                <span className="mono text-[12px] shrink-0" style={{ color: "var(--ink-2)" }}>{v.date}</span>
                 <span className="text-[13px]" style={{ color: "var(--ink)" }}>{v.note}</span>
               </li>
             ))}
@@ -178,7 +178,7 @@ ELSE status := HIÁNYOS`}
                       <div className="font-medium text-[color:var(--ink)]">{p?.id} – {p?.name}</div>
                       {o.note && <div className="text-xs text-[color:var(--ink-2)] truncate">{o.note}</div>}
                     </div>
-                    <span className={`text-[11px] px-2 py-0.5 rounded border shrink-0 ${outcomeColor(o.status)}`}>{t(`outcome.${o.status}`)}</span>
+                    <span className={`text-[12px] px-2 py-0.5 rounded border shrink-0 ${outcomeColor(o.status)}`}>{t(`outcome.${o.status}`)}</span>
                   </li>
                 );
               })}

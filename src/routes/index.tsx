@@ -65,7 +65,7 @@ function Dashboard() {
 
         <div className="lg:col-span-4 paper-card p-5 fade-slide">
           <div className="flex items-center justify-between mb-3">
-            <div className="mono text-[10px] uppercase tracking-[0.18em]" style={{ color: "var(--ink-2)" }}>
+            <div className="mono text-[11px] uppercase tracking-[0.18em]" style={{ color: "var(--ink-2)" }}>
               {t("dashboard.risks")}
             </div>
             <AlertTriangle className="w-4 h-4" style={{ color: "var(--accent)" }} />
@@ -75,7 +75,7 @@ function Dashboard() {
               <li key={i} className="text-[13px] flex items-start gap-2">
                 <span className={severityColor(g.severity)}>{t(`severity.${g.severity}`)}</span>
                 <div className="flex-1 min-w-0">
-                  <span className="mono text-[11px] tracking-[0.06em] font-medium">{g.projectId}</span>
+                  <span className="mono text-[12px] tracking-[0.06em] font-medium">{g.projectId}</span>
                   <span style={{ color: "var(--ink-2)" }}> · {g.text.toLowerCase()}</span>
                 </div>
               </li>
@@ -86,7 +86,7 @@ function Dashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         <div className="lg:col-span-7 paper-card p-5 fade-slide">
-          <div className="mono text-[10px] uppercase tracking-[0.18em] mb-4" style={{ color: "var(--ink-2)" }}>
+          <div className="mono text-[11px] uppercase tracking-[0.18em] mb-4" style={{ color: "var(--ink-2)" }}>
             {t("dashboard.projectsOverview")}
           </div>
           <div className="space-y-2">
@@ -99,10 +99,10 @@ function Dashboard() {
               >
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="mono text-[11px] font-medium tracking-[0.08em]" style={{ color: "var(--accent)" }}>{p.id}</span>
+                    <span className="mono text-[12px] font-medium tracking-[0.08em]" style={{ color: "var(--accent)" }}>{p.id}</span>
                     <span className="font-medium text-sm truncate">{p.name}</span>
                   </div>
-                  <div className="mono text-[10px] uppercase tracking-[0.12em] mt-1" style={{ color: "var(--ink-2)" }}>
+                  <div className="mono text-[11px] uppercase tracking-[0.12em] mt-1" style={{ color: "var(--ink-2)" }}>
                     {p.site} · {p.measure}
                   </div>
                 </div>
@@ -116,18 +116,18 @@ function Dashboard() {
         </div>
 
         <div className="lg:col-span-5 paper-card p-5 fade-slide">
-          <div className="mono text-[10px] uppercase tracking-[0.18em] mb-4" style={{ color: "var(--ink-2)" }}>
+          <div className="mono text-[11px] uppercase tracking-[0.18em] mb-4" style={{ color: "var(--ink-2)" }}>
             {t("dashboard.recent")}
           </div>
           <ul className="space-y-3">
             {auditLog.slice(0, 6).map((a, i) => (
               <li key={i} className="text-[13px] flex gap-3">
-                <div className="mono text-[10px] uppercase tracking-[0.06em] w-28 shrink-0" style={{ color: "var(--ink-2)" }}>
+                <div className="mono text-[11px] uppercase tracking-[0.06em] w-28 shrink-0" style={{ color: "var(--ink-2)" }}>
                   {a.time}
                 </div>
                 <div className="min-w-0">
                   <span className="font-medium">{a.action}</span>
-                  <span className="mono text-[11px]" style={{ color: "var(--ink-2)" }}> · {a.object}</span>
+                  <span className="mono text-[12px]" style={{ color: "var(--ink-2)" }}> · {a.object}</span>
                 </div>
               </li>
             ))}

@@ -151,14 +151,14 @@ function LoginPage() {
         </div>
 
         <div className="relative text-white">
-          <div className="text-[10px] uppercase tracking-[0.28em] mb-4 font-semibold" style={{ color: "#38BDF8" }}>
+          <div className="text-[11px] uppercase tracking-[0.28em] mb-4 font-semibold" style={{ color: "#38BDF8" }}>
             ── {t("login.subsection")}
           </div>
           <div className="text-3xl font-semibold leading-tight max-w-lg tracking-tight">{t("login.tagline")}</div>
           <div className="mt-6 h-[2px] w-16" style={{ background: "#38BDF8" }} />
         </div>
 
-        <div className="relative text-[10px] uppercase tracking-[0.22em] text-white/50">{t("footer.trl")}</div>
+        <div className="relative text-[11px] uppercase tracking-[0.22em] text-white/50">{t("footer.trl")}</div>
       </div>
 
       <div className="flex-1 flex items-center justify-center p-6 relative">
@@ -168,7 +168,7 @@ function LoginPage() {
             <button
               key={l}
               onClick={() => setLang(l)}
-              className={`mono text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 transition-colors ${
+              className={`mono text-[12px] uppercase tracking-[0.14em] px-3.5 py-2.5 md:px-2.5 md:py-1 min-w-11 min-h-11 md:min-w-0 md:min-h-0 transition-colors ${
                 lang === l ? "bg-[color:var(--ink)] text-white" : "text-[color:var(--ink-2)] hover:text-[color:var(--ink)]"
               }`}
               aria-label={t(`lang.${l}`)}
@@ -187,7 +187,7 @@ function LoginPage() {
           </div>
 
           <div className="paper-card p-6">
-            <div className="mono text-[10px] uppercase tracking-[0.22em] mb-1" style={{ color: "var(--accent)" }}>
+            <div className="mono text-[11px] uppercase tracking-[0.22em] mb-1" style={{ color: "var(--accent)" }}>
               ── {mode === "login" ? t("login.title") : t("login.register")}
             </div>
             <h1 className="text-lg font-semibold mb-1">
@@ -208,18 +208,18 @@ function LoginPage() {
 
                 {error && <ErrorBox message={error} />}
 
-                <button type="submit" disabled={busy} className="btn-signal w-full">
+                <button type="submit" disabled={busy} className="btn-signal w-full min-h-11">
                   {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : <LogIn className="w-4 h-4" />}
                   {t("login.title")}
                 </button>
 
-                <button type="button" onClick={() => toast(t("login.forgotDemo"))} className="w-full mono text-[10px] uppercase tracking-[0.14em] hover:text-[color:var(--accent)] transition-colors" style={{ color: "var(--ink-2)" }}>
+                <button type="button" onClick={() => toast(t("login.forgotDemo"))} className="w-full min-h-11 md:min-h-0 mono text-[12px] uppercase tracking-[0.14em] hover:text-[color:var(--accent)] transition-colors" style={{ color: "var(--ink-2)" }}>
                   {t("login.forgot")}
                 </button>
 
                 <div className="text-center text-xs pt-1" style={{ color: "var(--ink-2)" }}>
                   {t("login.noAccount")}{" "}
-                  <button type="button" onClick={() => switchMode("register")} className="mono uppercase tracking-[0.1em] font-medium hover:text-[color:var(--accent)]" style={{ color: "var(--ink)" }}>
+                  <button type="button" onClick={() => switchMode("register")} className="mono min-h-11 md:min-h-0 inline-flex items-center align-middle uppercase tracking-[0.1em] font-medium hover:text-[color:var(--accent)]" style={{ color: "var(--ink)" }}>
                     {t("login.register")}
                   </button>
                 </div>
@@ -264,14 +264,14 @@ function LoginPage() {
 
                 {error && <ErrorBox message={error} />}
 
-                <button type="submit" disabled={busy} className="btn-signal w-full">
+                <button type="submit" disabled={busy} className="btn-signal w-full min-h-11">
                   {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : <UserPlus className="w-4 h-4" />}
                   {t("login.register")}
                 </button>
 
                 <div className="text-center text-xs pt-1" style={{ color: "var(--ink-2)" }}>
                   {t("login.hasAccount")}{" "}
-                  <button type="button" onClick={() => switchMode("login")} className="mono uppercase tracking-[0.1em] font-medium hover:text-[color:var(--accent)]" style={{ color: "var(--ink)" }}>
+                  <button type="button" onClick={() => switchMode("login")} className="mono min-h-11 md:min-h-0 inline-flex items-center align-middle uppercase tracking-[0.1em] font-medium hover:text-[color:var(--accent)]" style={{ color: "var(--ink)" }}>
                     {t("login.title")}
                   </button>
                 </div>
@@ -280,7 +280,7 @@ function LoginPage() {
 
           </div>
 
-          <div className="text-center mono text-[9px] uppercase tracking-[0.2em] mt-5" style={{ color: "var(--ink-2)" }}>
+          <div className="text-center mono text-[11px] uppercase tracking-[0.2em] mt-5" style={{ color: "var(--ink-2)" }}>
             {t("footer.trl")}
           </div>
         </div>
@@ -294,7 +294,7 @@ const inputCls = "w-full px-3 py-2 text-sm bg-white border focus:outline-none fo
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block mono text-[10px] uppercase tracking-[0.16em] mb-1.5" style={{ color: "var(--ink-2)" }}>{label}</label>
+      <label className="block mono text-[11px] uppercase tracking-[0.16em] mb-1.5" style={{ color: "var(--ink-2)" }}>{label}</label>
       {children}
     </div>
   );

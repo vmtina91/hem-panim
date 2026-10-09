@@ -134,16 +134,16 @@ function ReviewRow({ r, isActive, canDecide, comment, corrected, error, onOpen, 
       <tr className="border-t align-top" style={{ borderColor: "var(--line)" }}>
         <td className="px-4 py-3">
           <div className="text-sm">{r.itemLabel}</div>
-          <div className="mono text-[10px] uppercase tracking-[0.14em] mt-1" style={{ color: "var(--ink-2)" }}>{r.kind === "field" ? "Mező" : r.kind === "claim" ? "Állítás" : "Szabályeredmény"}</div>
+          <div className="mono text-[11px] uppercase tracking-[0.14em] mt-1" style={{ color: "var(--ink-2)" }}>{r.kind === "field" ? "Mező" : r.kind === "claim" ? "Állítás" : "Szabályeredmény"}</div>
         </td>
         <td className="px-4 py-3 mono text-[12px]" style={{ color: "var(--accent)" }}>{r.projectId}</td>
-        <td className="px-4 py-3 mono text-[11px]" style={{ color: "var(--ink-2)" }}>{r.source}</td>
+        <td className="px-4 py-3 mono text-[12px]" style={{ color: "var(--ink-2)" }}>{r.source}</td>
         <td className={`px-4 py-3 text-right mono tabular-nums text-[13px] font-semibold ${confidenceColor(r.confidence)}`}>{r.confidence}%</td>
         <td className="px-4 py-3 text-[12px]" style={{ color: "var(--ink-2)" }}>{r.reason}</td>
         <td className="px-4 py-3">
           <span className={reviewStamp(r.status)}>{r.status}</span>
           {!isOpen && r.decidedBy && (
-            <div className="text-[10px] mt-1" style={{ color: "var(--ink-2)" }}>{t("review.decidedBy", { who: r.decidedBy, when: r.decidedAt ?? "" })}</div>
+            <div className="text-[11px] mt-1" style={{ color: "var(--ink-2)" }}>{t("review.decidedBy", { who: r.decidedBy, when: r.decidedAt ?? "" })}</div>
           )}
         </td>
         <td className="px-4 py-3 text-right">
@@ -154,7 +154,7 @@ function ReviewRow({ r, isActive, canDecide, comment, corrected, error, onOpen, 
             <span className="text-xs inline-flex items-center gap-1" style={{ color: "var(--ink-2)" }}><Lock className="w-3 h-3" /> {t("documents.drawer.readonly")}</span>
           )}
           {r.comment && !isOpen && (
-            <div className="text-[11px] italic mt-1" style={{ color: "var(--ink-2)" }}>„{r.comment}”</div>
+            <div className="text-[12px] italic mt-1" style={{ color: "var(--ink-2)" }}>„{r.comment}”</div>
           )}
         </td>
       </tr>
